@@ -3,10 +3,15 @@ jobs:
     machine:
       image:  ubuntu:latest
     steps:
+      - checkout
       - run:
           name: install aws cli
           command: |
             sudo apt-get update
             sudo apt-get install aws-cli -y
       - run: ls -la
-          
+      
+workflows:
+  build_and_test:
+    jobs:
+      - build_deploy          
