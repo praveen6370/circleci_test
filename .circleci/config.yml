@@ -1,7 +1,7 @@
 jobs:
   build:
     docker:
-      - image: apache:latest
+      - image: ubuntu:18.04
     steps:
       - checkout
       - run : echo "this is build job"
