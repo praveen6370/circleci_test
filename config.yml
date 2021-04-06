@@ -1,7 +1,7 @@
 jobs:
   build_deploy:
     machine:
-      image:  ubuntu:latest
+      image:  ubuntu-2004:202010-01
     steps:
       - checkout
       - run:
@@ -12,6 +12,7 @@ jobs:
       - run: ls -la
       
 workflows:
-  build_and_test:
+  version: 2
+  execute_bulk:
     jobs:
       - build_deploy          
