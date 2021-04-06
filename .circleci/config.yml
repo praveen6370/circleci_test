@@ -15,7 +15,7 @@ jobs:
           command: |
             sudo apt-get update
 #            sudo apt-get install aws-cli -y
-      - run: ls -la
+      - run: ls -l
       
 workflows:
   version: 2
