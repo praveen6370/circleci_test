@@ -3,7 +3,6 @@ jobs:
     machine:
       image:  ubuntu:latest
     steps:
-      - checkout
       - run:
           name: install aws cli
           command: |
