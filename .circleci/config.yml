@@ -7,7 +7,7 @@ jobs:
       - run : echo "this is build job"
   build_deploy:
     docker:
-      image: ubuntu:latest
+      - image: ubuntu
     steps:
       - checkout
       - run:
