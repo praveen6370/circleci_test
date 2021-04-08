@@ -13,12 +13,12 @@ jobs:
       - run:
           name: install aws cli jq
           command: |
-            sudo apt-get update
-            sudo apt-get -y update; apt-get -y install git curl jq python3-pip
-            sudo pip3 install -U awscli
-            sudo curl -fsSL https://get.docker.com -o get-docker.sh
-            sudo curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh | bash
-            sudo tfswitch 0.12.23
+            apt-get update
+            apt-get -y update; apt-get -y install git curl jq python3-pip
+            pip3 install -U awscli
+            curl -fsSL https://get.docker.com -o get-docker.sh
+            curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh | bash
+            tfswitch 0.12.23
       - run:  echo "===================719018074674========frontend==================="
       - run:  terraform init --backend-config="access_key=$AWS_ACCESS_KEY_ID" --backend-config="secret_key=$AWS_SECRET_ACCESS_KEY"
       - run:  aws sts assume-role --role-arn "arn:aws:iam::719018074674:role/sil_jenkins" --role-session-name "jenkins-connect" >    assume-role-output.txt
