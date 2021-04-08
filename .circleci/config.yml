@@ -13,7 +13,7 @@ jobs:
       - run:
           name: install aws cli jq
           command: |
- #           apt-get update
+            apt-get update
  #           apt-get -y update; apt-get -y install git curl jq python3-pip
  #           pip3 install -U awscli
  #           curl -fsSL https://get.docker.com -o get-docker.sh
