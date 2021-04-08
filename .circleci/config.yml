@@ -13,19 +13,20 @@ jobs:
       - run:
           name: install aws cli jq
           command: |
-            apt-get update
-            apt-get -y update; apt-get -y install git curl jq python3-pip
-            pip3 install -U awscli
-            curl -fsSL https://get.docker.com -o get-docker.sh
-            curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh | bash
-            tfswitch 0.12.23
-      - run:  echo "===================719018074674========frontend==================="
-      - run:  aws configure set AWS_ACCESS_KEY_ID $AWS_ACCESS_KEY_ID
-      - run:  aws configure set AWS_DEFAULT_REGION $AWS_DEFAULT_REGION
-      - run:  aws configure set AWS_SECRET_ACCESS_KEY $AWS_SECRET_ACCESS_KEY
+ #           apt-get update
+ #           apt-get -y update; apt-get -y install git curl jq python3-pip
+ #           pip3 install -U awscli
+ #           curl -fsSL https://get.docker.com -o get-docker.sh
+ #           curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh | bash
+ #           tfswitch 0.12.23
+ #     - run:  echo "===================719018074674========frontend==================="
+ #     - run:  aws configure set AWS_ACCESS_KEY_ID $AWS_ACCESS_KEY_ID
+ #     - run:  aws configure set AWS_DEFAULT_REGION $AWS_DEFAULT_REGION
+ #     - run:  aws configure set AWS_SECRET_ACCESS_KEY $AWS_SECRET_ACCESS_KEY
      #  - run:  aws configure
-      - run:  aws s3 ls
-      - run:  aws sts get-caller-identity
+ #     - run:  aws s3 ls
+ #     - run:  aws sts get-caller-identity
+      - run:  ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
       - run:  git clone git@gitlab.z5x.tech:z5x-tech/z5x-internal/z5x-techops/pipeline-bzinga.git
       - run:
           command: |
