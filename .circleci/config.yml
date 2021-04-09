@@ -26,7 +26,7 @@ jobs:
      #  - run:  aws configure
  #     - run:  aws s3 ls
  #     - run:  aws sts get-caller-identity
-      - run:  ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
+ #     - run:  ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
       - run:  git clone git@gitlab.z5x.tech:z5x-tech/z5x-internal/z5x-techops/pipeline-bzinga.git
       - run:
           command: |
