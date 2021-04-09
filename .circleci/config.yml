@@ -29,8 +29,8 @@ jobs:
       - run:  ssh-keyscan -t rsa gitlab.z5x.tech >> ~/.ssh/known_hosts
       - run: eval `ssh-agent -s`
       - run:  git clone git@gitlab.z5x.tech:z5x-tech/z5x-internal/z5x-techops/pipeline-bzinga.git 
-      - run:
-          command: |
+#      - run:
+ #         command: |
             aws sts assume-role --role-arn "arn:aws:iam::719018074674:role/sil_jenkins" --role-session-name "jenkins-connect" >    assume-role-output.txt
             export AWS_ACCESS_KEY_ID=`cat assume-role-output.txt | jq -c '.Credentials.AccessKeyId' | tr -d '"' | tr -d ' '`
             export AWS_SECRET_ACCESS_KEY=`cat assume-role-output.txt | jq -c '.Credentials.SecretAccessKey' | tr -d '"' | tr -d ' '`
