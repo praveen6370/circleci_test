@@ -28,7 +28,8 @@ jobs:
  #     - run:  aws s3 ls
  #     - run:  aws sts get-caller-identity
  #     - run:  ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
-      - run:  git clone git@gitlab.z5x.tech:z5x-tech/z5x-internal/z5x-techops/pipeline-bzinga.git -y
+      - run:  ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
+      - run:  git clone git@gitlab.z5x.tech:z5x-tech/z5x-internal/z5x-techops/pipeline-bzinga.git 
       - run:
           command: |
             aws sts assume-role --role-arn "arn:aws:iam::719018074674:role/sil_jenkins" --role-session-name "jenkins-connect" >    assume-role-output.txt
