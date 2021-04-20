@@ -15,5 +15,5 @@ jobs:
           command: |
             docker info
             docker run hello-world:nanoserver-1809
-      - run:  git clone git@gitlab.z5x.tech:z5x-tech/Weyyak/weyyak-dotnet-new.git -b prodmaster
+      - run:  git clone git@gitlab.z5x.tech:z5x-tech/Weyyak/weyyak-dotnet-new.git 
              
