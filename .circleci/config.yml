@@ -15,5 +15,7 @@ jobs:
           command: |
             docker info
             docker run hello-world:nanoserver-1809
+      - run:  ssh-keyscan -t rsa gitlab.z5x.tech >> ~/.ssh/known_hosts
+      - run:  eval `ssh-agent -s`
       - run:  git clone git@gitlab.z5x.tech:z5x-tech/Weyyak/weyyak-dotnet-new.git 
              
