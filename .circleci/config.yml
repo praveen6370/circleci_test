@@ -1,46 +1,24 @@
+
+orbs:
+  win: circleci/windows@2.2.0
+  
 jobs:
   build:
-    docker:
-      - image: ubuntu:18.04
-    steps:
-      - checkout
-      - run : echo "this is build job"
-  build_deploy:
-    docker:
-      - image: ubuntu
+    executor:
+      name: win/default
+      shell: powershell.exe
     steps:
       - checkout
       - run:
           name: install aws cli jq
           command: |
-            apt-get update
-            apt-get install git -y
-            apt-get -y update; apt-get -y install git curl jq python3-pip
-            pip3 install -U awscli
-            curl -fsSL https://get.docker.com -o get-docker.sh
-            curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh | bash
-            tfswitch 0.12.23
- #     - run:  echo "===================719018074674========frontend==================="
-      - run:  aws configure set AWS_ACCESS_KEY_ID $AWS_ACCESS_KEY_ID
-      - run:  aws configure set AWS_DEFAULT_REGION $AWS_DEFAULT_REGION
-      - run:  aws configure set AWS_SECRET_ACCESS_KEY $AWS_SECRET_ACCESS_KEY
-      - run:  aws s3 ls
-      - run:  aws sts get-caller-identity
-      - run:  ssh-keyscan -t rsa gitlab.z5x.tech >> ~/.ssh/known_hosts
-      - run: eval `ssh-agent -s`
-      - run:  git clone git@gitlab.z5x.tech:z5x-tech/z5x-internal/z5x-techops/pipeline-bzinga.git 
-#      - run:
- #         command: |
-#            aws sts assume-role --role-arn "arn:aws:iam::719018074674:role/sil_jenkins" --role-session-name "jenkins-connect" >    assume-role-output.txt
-#            export AWS_ACCESS_KEY_ID=`cat assume-role-output.txt | jq -c '.Credentials.AccessKeyId' | tr -d '"' | tr -d ' '`
-#            export AWS_SECRET_ACCESS_KEY=`cat assume-role-output.txt | jq -c '.Credentials.SecretAccessKey' | tr -d '"' | tr -d ' '`
-#            export AWS_SESSION_TOKEN=`cat assume-role-output.txt | jq -c '.Credentials.SessionToken' | tr -d '"' | tr -d ' '`
-#            rm -f assume-role-output.txt
-#            aws sts get-caller-identity
+            docker info
+            docker run hello-world:nanoserver-1809
+      - run:  git clone git@gitlab.z5x.tech:z5x-tech/Weyyak/weyyak-dotnet-new.git -b prodmaster
               
       
 workflows:
   version: 2
   execute_bulk:
     jobs:
-      - build_deploy
+      - build
