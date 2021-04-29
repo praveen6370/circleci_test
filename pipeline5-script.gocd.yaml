@@ -12,6 +12,21 @@ pipelines:
         auto_update: true
         branch: main
     stages:
+    - stage6-script:
+        fetch_materials: true
+        keep_artifacts: false
+        clean_workspace: false
+        approval:
+          type: success
+          allow_only_on_success: false
+        jobs:
+          job5-script:
+            timeout: 0
+            tasks:
+            - exec:
+              command: docker --version
+                run_if: passed    
+    stages:
     - stage5-script:
         fetch_materials: true
         keep_artifacts: false
@@ -32,9 +47,6 @@ pipelines:
                 arguments:
                 - --version
                 command: docker
-                run_if: passed
-            - exec:
-                command: aws sts get-caller-identity           
                 run_if: passed
             - exec:
                 arguments:
