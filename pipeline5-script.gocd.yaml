@@ -26,7 +26,6 @@ pipelines:
             - exec:
                 command: docker --version
                 run_if: passed    
-    stages:
     - stage5-script:
         fetch_materials: true
         keep_artifacts: false
