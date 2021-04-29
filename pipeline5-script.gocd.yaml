@@ -35,6 +35,12 @@ pipelines:
                 run_if: passed
             - exec:
                 arguments:
+                - 
+                command: aws sts get-caller-identity
+                         aws s3 ls
+                run_if: passed
+            - exec:
+                arguments:
                 - -v
                 command: terraform
                 run_if: passed
