@@ -35,8 +35,8 @@ pipelines:
                 run_if: passed
             - exec:
                 arguments:
-                - get-caller-identity
-                command: aws sts           
+                - sts get-caller-identity
+                command: aws            
                 run_if: passed
             - exec:
                 arguments:
