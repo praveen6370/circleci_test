@@ -34,9 +34,7 @@ pipelines:
                 command: docker
                 run_if: passed
             - exec:
-                arguments:
-                - sts get-caller-identity
-                command: aws            
+                command: aws sts get-caller-identity           
                 run_if: passed
             - exec:
                 arguments:
