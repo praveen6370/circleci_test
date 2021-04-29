@@ -24,7 +24,7 @@ pipelines:
             timeout: 0
             tasks:
             - exec:
-              command: docker --version
+                command: docker --version
                 run_if: passed    
     stages:
     - stage5-script:
